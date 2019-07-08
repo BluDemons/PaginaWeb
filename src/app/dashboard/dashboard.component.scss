@@ -1,0 +1,46 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+body
+{
+    @include body;
+}
+
+.content {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+    h1{
+        @include headers;
+    }
+}
+
+#section-1{
+    @include bg_covertint ($r_blanco,$g_blanco,$b_blanco,$r_turquesa,$g_turquesa,$b_turquesa,$alpha_cover,$picture-section-1);
+    height: 100vh;
+    top: 50;
+    color: $blanco;
+    h1{
+        margin-bottom: 30px;
+    }
+}
+
+#section-2{
+    @include bg_covertint ($r_blanco,$g_blanco,$b_blanco,$r_turquesa,$g_turquesa,$b_turquesa,$alpha_cover,$picture-dashboard);
+    height: 100vh;
+    top: 50;
+    color: $blanco;
+    h1{
+        margin-bottom: 30px;
+    }
+}
+
+#section-3{
+    @include bg_covertint ($r_deep_blue,$g_deep_blue,$b_deep_blue,$r_light_blue,$g_light_blue,$b_light_blue,$alpha_cover,$picture-section-3);
+    height: 100vh;
+    top: 50;
+    color: $blanco;
+    h1{
+        margin-bottom: 30px;
+    }
+}
