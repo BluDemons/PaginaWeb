@@ -9,16 +9,24 @@
               la
               geografía española y manteniendo una apertura estilística donde caben multitud de corrientes sónicas
               diferentes.</p>
-            <form [formGroup]="formGroup">
+            <form [formGroup]="loginform">
                 <div class="form-element">
-                    <input placeholder="Nombre" name="name" formControlName="name" type="text">
+                    <input placeholder="Nombre" name="usuario" formControlName="usuario" type="text">
+                    <span *ngIf = "mensaje !=''"></span>
                 </div>
                 <div class="form-element">
                     <input placeholder="Correo Electrónico" name="email" formControlName="email" type="text">
                 </div>
                 <div class="form-element">
-                    <button type="submit"> Enviar Datos </button>
+                    <input placeholder="Password" name="password" formControlName="password" type="password">
                 </div>
+                <div class="form-element">
+                    <button (click)="validaLoginForm()"> Enviar Datos </button>
+                </div>
+                {{usuario}}
+                {{email}}
+                {{password}}
+                {{mensaje}}
             </form>
         </div>
     </div>

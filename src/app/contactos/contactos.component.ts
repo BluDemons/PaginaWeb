@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-contactos',
   templateUrl: './contactos.component.html',
@@ -8,20 +9,43 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ContactosComponent implements OnInit {
 
-  public formGroup: FormGroup;
+  loginform: FormGroup
+  registroUsuariosForm: FormGroup
+  usuario:string
+  email: string
+  password: string
+  mensaje :any
 
   constructor(private formBuilder: FormBuilder) { }
-
+  
   ngOnInit() {
-    this.buildForm();
+    this.crearLoginForm();
+    
   }
 
-  private buildForm(){
-    const name = 'Nombre'
-    this.formGroup = this.formBuilder.group({
-      name: [name, Validators.required],
-      email: ['Correo Electrónico', [Validators.required, Validators.email]]
+  crearLoginForm(){
+    this.loginform = this.formBuilder.group({
+      usuario: ['', Validators.required, Validators.minLength(6)],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['' ,[Validators.required,Validators.minLength(6)]],
+      mensaje:['',[Validators.required]]
     });
+  }
+
+  validaLoginForm(){
+    if(this.loginform.valid){
+      this.usuario=this.loginform.controls['usuario'].value
+      this.email = this.loginform.controls['email'].value
+      this.password = this.loginform.controls['password'].value
+    }else{
+      this.usuario = ' '
+      this.email = ''
+      this.password = ''
+      this.mensaje =  JSON.stringify(this.loginform.controls['usuario'].errors)
+      if(this.mensaje){
+        alert('dawdwad')
+      }
+    }
   }
 
 }
