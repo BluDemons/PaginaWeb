@@ -1,12 +1,28 @@
 @import "../../scss/variables";
 @import "../../scss/mixins";
+
+.galeria {
+    @include clearfix;
+    margin-left: 10%;
+    li.imagen {
+      float:left;
+      list-style: none;
+      @include gridImagenes(4, 1%);
+      img {
+        display: block;
+        max-width: 100%;
+        margin-top: 20%;
+        @include border-radius(10px);
+      }
+    }
+  }
 #section-2{
     @include bg_covertint ($r_blanco,$g_blanco,$b_blanco,$r_turquesa,$g_turquesa,$b_turquesa,$alpha_cover,$picture-dashboard);
     height: 100vh;
     top: 50;
     color: $blanco;
+    
     h2{
-        margin-bottom: 30px;
         margin-top: 70px;
     }
 }

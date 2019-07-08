@@ -44,3 +44,15 @@ body
         margin-bottom: 30px;
     }
 }
+.social{
+    text-align: center;
+    a{
+        color: $blanco;
+    }
+    .imgRedonda {
+        width:200px;
+        height:200px;
+        border-radius:160px;
+        border:10px solid $azulOscuro;
+    }
+}

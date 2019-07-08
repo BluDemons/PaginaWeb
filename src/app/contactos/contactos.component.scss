@@ -1,0 +1,82 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+body
+{
+    @include body;
+}
+
+#section-2{
+	height: 100vh;
+	background-color: $rosa;
+	color: $azulOscuro;
+
+	.content{
+		@include center-vertical;
+	}
+
+	h1{
+		margin-top: 50px;
+        margin-bottom: 40px;
+        text-align: center;
+	}
+
+    h3{
+        margin-top: 0;
+        margin-bottom: 40px;
+        text-align: center; 
+    }
+    p{
+        margin-left: 10%;
+        margin-right: 10%;
+        color: $blanco;
+    }
+	form{
+		.form-element{
+			display: block;
+			input[type=text]{
+				border-style: none;
+				background: none;
+				outline: none;
+				border-bottom: solid 2px darken($blanco,20%);
+				font-size: 50px;
+				font-family: 'Lato', sans-serif;
+				width: 60%;
+				margin-left: 20%;
+				text-align: center;
+				margin-top: 15px;
+				margin-bottom: 30px;
+				color: $blanco;
+				transition: all 0.3s ease 0s;
+				padding-bottom: 20px;
+
+				&:focus{
+					border-bottom: solid 2px $rojo;
+				}
+			}
+			button{
+				font-size: 50px;
+				font-family: 'Lato', sans-serif;
+				//background: none;
+				background: $rosa;
+				border: 1px solid $rosa;
+				color: $blanco;
+				width: 60%;
+				outline: none;
+				margin-left: 20%;
+				margin-top: 30px;
+				margin-bottom: 30px;
+				transition: all 0.3s ease 0s;
+				padding: 20px 20px 20px 20px;
+
+				&:hover{
+					background: none;
+					background: $negro;
+					color: $blanco;
+					border: 1px solid $blanco;
+				}
+			}
+		}
+	}
+	@include placeholder(darken($azul,20%),$negro);
+}

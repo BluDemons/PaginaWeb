@@ -8,6 +8,8 @@ import { NoticiasComponent } from './noticias/noticias.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeadersComponent } from './headers/headers.component';
 import { GaleriaComponent } from './galeria/galeria.component';
+import { ContactosComponent } from './contactos/contactos.component';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { GaleriaComponent } from './galeria/galeria.component';
     NoticiasComponent,
     DashboardComponent,
     HeadersComponent,
-    GaleriaComponent
+    GaleriaComponent,
+    ContactosComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
