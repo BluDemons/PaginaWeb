@@ -4,6 +4,7 @@
 .galeria {
     @include clearfix;
     margin-left: 10%;
+    margin-right: 10%;
     li.imagen {
       float:left;
       list-style: none;
@@ -23,6 +24,6 @@
     color: $blanco;
     
     h2{
-        margin-top: 70px;
+        margin-top: 50px;
     }
 }

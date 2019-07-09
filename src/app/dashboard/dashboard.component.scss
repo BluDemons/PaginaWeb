@@ -37,22 +37,35 @@ body
 
 #section-3{
     @include bg_covertint ($r_deep_blue,$g_deep_blue,$b_deep_blue,$r_light_blue,$g_light_blue,$b_light_blue,$alpha_cover,$picture-section-3);
-    height: 100vh;
-    top: 50;
+    height: 50vh;
     color: $blanco;
+    text-align: center;
     h1{
-        margin-bottom: 30px;
+        margin-top:0;
+    }
+    p{
+        margin-left: 10%;
+        margin-right: 10%;
     }
 }
-.social{
+footer{
+    position: fixed; 
+    bottom: 0;
+    height: 22%;
+    width: 20%;
     text-align: center;
+    font-size: 15em;
+    background-color: rgb(255, 255, 255,0.5 );
+    margin: 0.1cm;
+    font-size: 20px;
     a{
         color: $blanco;
     }
     .imgRedonda {
-        width:200px;
-        height:200px;
+        width:70px;
+        height:70px;
         border-radius:160px;
-        border:10px solid $azulOscuro;
+        border:5px solid $azulOscuro;
     }
 }
+
