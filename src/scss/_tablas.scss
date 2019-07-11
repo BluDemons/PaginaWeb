@@ -36,3 +36,6 @@ table {
     }
   }
 }
+.colorbutton{
+  @include button(map-keys($buttons-colors)...)
+}

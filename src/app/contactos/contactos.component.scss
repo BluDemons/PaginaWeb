@@ -102,3 +102,6 @@ body
 	}
 	@include placeholder(darken($azul,20%),$negro);
 }
+.colorbutton{
+	@include button(map-keys($buttons-colors)...)
+  }

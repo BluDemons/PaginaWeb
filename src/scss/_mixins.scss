@@ -24,6 +24,7 @@
     clear: both;
   }
 }
+
 @mixin body {
   margin: 0;
   padding: 0;
@@ -76,6 +77,26 @@ font-family: $fuente-principal;
         margin-right:0;
         margin-bottom: 0;
     }
+}
+
+@mixin button ($colors...){
+	@if $buttons {
+		display: inline-block;
+		margin : 1em;
+		color: map-get($buttons-colors,nth($colors,1));
+		a{
+			text-decoration: none;
+		}
+		@if length($colors) > 1{
+			@for $i from 2 through length($colors){
+				&.#{nth($colors,$i)}{
+					color:map-get($buttons-colors,nth($colors,$i));
+				}
+			}
+		}
+	}@else{
+		display: none;
+	}
 }
 
 @mixin border-box {

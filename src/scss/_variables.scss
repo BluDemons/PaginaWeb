@@ -58,3 +58,9 @@ $picture-section-1: '../../assets/img/images2.jpg';
 $picture-section-3: '../../assets/img/images1.jpg';
 //grid
 $numero-columnas: 12;
+$buttons: true !default;
+$buttons-colors:(
+    primario:blue,
+    secundario:yellow,
+    alerta:red,
+)

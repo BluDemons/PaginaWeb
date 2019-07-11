@@ -27,17 +27,16 @@ body
 
 #section-2{
     @include bg_covertint ($r_blanco,$g_blanco,$b_blanco,$r_turquesa,$g_turquesa,$b_turquesa,$alpha_cover,$picture-dashboard);
-    height: 100vh;
-    top: 50;
+    height: 120vh;
     color: $blanco;
-    h1{
-        margin-bottom: 30px;
+    h2{
+        padding-top: 5%;
     }
 }
 
 #section-3{
     @include bg_covertint ($r_deep_blue,$g_deep_blue,$b_deep_blue,$r_light_blue,$g_light_blue,$b_light_blue,$alpha_cover,$picture-section-3);
-    height: 50vh;
+    height: 75vh;
     color: $blanco;
     text-align: center;
     h1{
@@ -47,25 +46,25 @@ body
         margin-left: 10%;
         margin-right: 10%;
     }
-}
-footer{
-    position: fixed; 
-    bottom: 0;
-    height: 22%;
-    width: 20%;
-    text-align: center;
-    font-size: 15em;
-    background-color: rgb(255, 255, 255,0.5 );
-    margin: 0.1cm;
-    font-size: 20px;
-    a{
-        color: $blanco;
+    footer{
+        position: relative; 
+        bottom: 0;
+        height: 34%;
+        text-align: center;
+        font-size: 15em;
+        background-color: rgb(0, 0, 0,0.5 );
+        margin: 0.1cm;
+        font-size: 20px;
+        a{
+            color: $blanco;
+        }
+        .imgRedonda {
+            width:70px;
+            height:70px;
+            border-radius:160px;
+            border:5px solid $azulOscuro;
+        }
     }
-    .imgRedonda {
-        width:70px;
-        height:70px;
-        border-radius:160px;
-        border:5px solid $azulOscuro;
-    }
 }
+
 

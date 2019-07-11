@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-
 @Component({
   selector: 'app-contactos',
   templateUrl: './contactos.component.html',
@@ -47,5 +46,4 @@ export class ContactosComponent implements OnInit {
       }
     }
   }
-
 }
