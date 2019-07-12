@@ -21,7 +21,7 @@
                     <span>{{getError('password')}}</span>
                 </div>
                 <div class="form-element">
-                    <button class="colorbutton white"(click)="validaLoginForm()">
+                    <button class="colorbutton white" [disabled]="!loginform.valid" (click)="validaLoginForm()" type="submit">
                         Enviar Datos
                     </button>
                 </div>

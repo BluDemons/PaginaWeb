@@ -25,44 +25,26 @@ export class ContactosComponent implements OnInit {
 
   crearLoginForm(){
     this.loginform = this.formBuilder.group({
-      name: ['',[Validators.required, Validators.minLength(6)]],
-      lastname: ['',[Validators.required, Validators.minLength(6)]],
+      name: ['',[Validators.required,Validators.pattern('[A-Z]{1}[a-z]{3,10}')]],
+      lastname: ['',[Validators.required,Validators.pattern('[A-Z]{1}[a-z]{3,10}')]],
       email: ['', [Validators.required, Validators.pattern('[a-z]+[a-z0-9.-_]*@[a-z]+[a-z0-9]*.[a-z]{2,3}[.]?[a-z]*')]],
-      password: ['' ,[Validators.required,Validators.pattern('^[A-Z]?[a-z]+[0-9]+'),Validators.minLength(5)]],//this.validatePassword],
-      mensaje:['',[Validators.required]]
+      password: ['' ,[Validators.required,Validators.pattern('^[A-Z]?[a-z]+[0-9]+')]],
     });
   }
 
-  // private validatePassword(control: AbstractControl) {
-  //   const password = control.value;
-  //   let error = null;
-  //   if (!password.includes('$')) {
-  //     error = { ...error, dollar: 'needs a dollar symbol' };
-  //   }
-  //   if (!parseFloat(password[0])) {
-  //     error = { ...error, number: 'must start with a number' };
-  //   }
-  //   return error;
-  // }
-
   validaLoginForm(){
     if(this.loginform.valid){
-      this.name=this.loginform.controls['name'].value
-      this.lastname=this.loginform.controls['lastname'].value
-      this.email = this.loginform.controls['email'].value
-      this.password = this.loginform.controls['password'].value
-      console.log(this.loginform)
+      this.name=JSON.stringify(console.log(this.loginform.controls['name'].value))
+      this.lastname=JSON.stringify(console.log(this.loginform.controls['lastname'].value))              
+      this.email = JSON.stringify(console.log(this.loginform.controls['email'].value))
+      this.password =JSON.stringify(console.log(this.loginform.controls['password'].value))
     }else{
       this.name = JSON.stringify(console.log(this.loginform.controls['name'].errors))
       this.lastname = JSON.stringify(console.log(this.loginform.controls['lastname'].errors))
       this.email = JSON.stringify(console.log(this.loginform.controls['email'].errors))
-      this.password = JSON.stringify(console.log(this.loginform.controls['password'].errors))
+      this.password =JSON.stringify(console.log(this.loginform.controls['password'].errors))
+      }
     }
-    if(this.loginform.invalid){
-      console.log(this.loginform.controls['email'].errors.pattern)
-      alert('Por favor llene los campos con *')
-    }
-  }
 
   public getError(controlName: string): string {
     let error = '';
