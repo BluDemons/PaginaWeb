@@ -1,35 +1,27 @@
 <body>
     <div id="section-2">
         <div class="content">
-            <h1> Más Información </h1>
-            <h3>Festivales.</h3>
-            <p>La electrónica nunca ha perdido su relevancia y poder de convocatoria en la escena de festivales, y este
-              año las
-              citas se han multiplicado una vez más, creciendo en lo cuantitativo y lo cualitativo a lo largo y ancho de
-              la
-              geografía española y manteniendo una apertura estilística donde caben multitud de corrientes sónicas
-              diferentes.</p>
+            <h1> Más Festivales</h1>
+            <h5> Regístrate</h5>
             <form [formGroup]="loginform">
                 <div class="form-element">
-                    <input placeholder="Nombre" name="usuario" formControlName="usuario" type="text">
-                    <span *ngIf = "mensaje !=''"></span>
+                    <input placeholder="Nombre" name="name" formControlName="name" type="text">*
                 </div>
                 <div class="form-element">
-                    <input placeholder="Correo Electrónico" name="email" formControlName="email" type="text">
+                    <input placeholder="Apellido" name="lastname" formControlName="lastname" type="text">*
                 </div>
                 <div class="form-element">
-                    <input placeholder="Password" name="password" formControlName="password" type="password">
+                    <input placeholder="Correo Electrónico" name="email" formControlName="email" type="text">*
                 </div>
                 <div class="form-element">
-                    <button (click)="validaLoginForm()"> Enviar Datos </button>
-                    
+                    <input placeholder="Password" name="password" formControlName="password" type="password">*
                 </div>
-                {{usuario}}
-                {{email}}
-                {{password}}
-                {{mensaje}}
+                <div class="form-element">
+                    <button class="colorbutton white"(click)="validaLoginForm()">
+                        Enviar Datos
+                    </button>
+                </div>
             </form>
         </div>
     </div>
 </body>
-<button class="colorbutton alerta">hola</button>
