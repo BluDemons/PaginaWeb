@@ -27,8 +27,8 @@ export class ContactosComponent implements OnInit {
     this.loginform = this.formBuilder.group({
       name: ['',[Validators.required, Validators.minLength(6)]],
       lastname: ['',[Validators.required, Validators.minLength(6)]],
-      email: ['', [Validators.required, Validators.pattern('^[a-z0-9_.+-]+@[a-zA-Z0-9-]+.[a-z]+$')]],
-      password: ['' ,[Validators.required,Validators.minLength(6)]],//this.validatePassword],
+      email: ['', [Validators.required, Validators.pattern('[a-z]+[a-z0-9.-_]*@[a-z]+[a-z0-9]*.[a-z]{2,3}[.]?[a-z]*')]],
+      password: ['' ,[Validators.required,Validators.pattern('^[A-Z]?[a-z]+[0-9]+'),Validators.minLength(5)]],//this.validatePassword],
       mensaje:['',[Validators.required]]
     });
   }
