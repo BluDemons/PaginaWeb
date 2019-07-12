@@ -5,16 +5,20 @@
             <h5> Regístrate</h5>
             <form [formGroup]="loginform">
                 <div class="form-element">
-                    <input placeholder="Nombre" name="name" formControlName="name" type="text">*
+                    <input placeholder="Nombre" name="name" formControlName="name" type="text">
+                    <span>{{getError('name')}}</span>
                 </div>
                 <div class="form-element">
-                    <input placeholder="Apellido" name="lastname" formControlName="lastname" type="text">*
+                    <input placeholder="Apellido" name="lastname" formControlName="lastname" type="text">
+                    <span>{{getError('lastname')}}</span>
                 </div>
                 <div class="form-element">
-                    <input placeholder="Correo Electrónico" name="email" formControlName="email" type="text">*
+                    <input placeholder="example@example.com" name="email" formControlName="email" type="text">
+                    <span>{{getError('email')}}</span>
                 </div>
                 <div class="form-element">
-                    <input placeholder="Password" name="password" formControlName="password" type="password">*
+                    <input placeholder="Password" name="password" formControlName="password" type="password">
+                    <span>{{getError('password')}}</span>
                 </div>
                 <div class="form-element">
                     <button class="colorbutton white"(click)="validaLoginForm()">

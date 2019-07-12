@@ -12,19 +12,16 @@ body{
 
 	.content{
 		@include center-vertical;
-		top: 60%;
+		top: 65%;
 		position: relative;
 		background: $blanco;
 	}
-
 	h5{
 		margin-top: 0px;
         margin-bottom: 40px;
 		text-align: center;
-		color: $azulOscuro;
-		
+		color: $azulOscuro;	
 	}
-
     h1{
         margin-top: 0px;
         margin-bottom: 40px;
@@ -44,7 +41,7 @@ body{
 				background: none;
 				outline: none;
 				border-bottom: solid 2px darken($blanco,20%);
-				font-size: 50px;
+				font-size: 25px;
 				font-family: 'Lato', sans-serif;
 				width: 50%;
 				margin-left: 25%;
@@ -64,7 +61,7 @@ body{
 				background: none;
 				outline: none;
 				border-bottom: solid 2px darken($blanco,20%);
-				font-size: 50px;
+				font-size: 25px;
 				font-family: 'Lato', sans-serif;
 				width: 50%;
 				margin-left: 25%;
