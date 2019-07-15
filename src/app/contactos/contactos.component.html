@@ -15,11 +15,11 @@
                 <div class="form-element">
                     <input placeholder="Teléfono" name="phone" formControlName="phone" type="text">
                     <span *ngIf="getError('phone')">número Obligatorio</span>
-                    <div formArrayName="alternativePhone">
-                        <div *ngFor="let item of alternativePhone.controls; let i=index" [formGroupName]="i">
-                            <input class="form-control" type="text" placeholder="Celular (Opcional)" formControlName="alternativePhone">
+                    <div formArrayName="Phones">
+                        <div *ngFor="let item of Phones.controls; let i=index" [formGroupName]="i">
+                            <input class="form-control" type="text" placeholder="cellPhone (Opcional)" formControlName="Phones">
                         </div>
-                    <a class="addPhone" type="button" (click)="addPhone()">Add Phone</a>
+                    <a class="addPhone" type="button" (click)="addPhones()">Add Phone</a>
                     </div>
                 </div>
                 <div class="form-element">

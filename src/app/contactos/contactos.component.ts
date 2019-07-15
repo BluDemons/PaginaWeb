@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { parseHttpResponse } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'app-contactos',
@@ -15,6 +16,7 @@ export class ContactosComponent implements OnInit {
   phone:string
   email: string
   password: string
+  phones: string[]
 
   constructor(private formBuilder: FormBuilder) { }
   
@@ -27,30 +29,30 @@ export class ContactosComponent implements OnInit {
     this.loginform = this.formBuilder.group({
       name: ['',[Validators.required,Validators.pattern('[A-Z]{1}[a-z]{3,10}')]],
       lastname: ['',[Validators.required,Validators.pattern('[A-Z]{1}[a-z]{3,10}')]],
-      phone:['',[Validators.required,Validators.pattern('(09)+[0-9]{8}')]],
+      phone:['',[Validators.required,Validators.pattern('(09){1}[0-9]{8}')]],
       email: ['', [Validators.required, Validators.pattern('[a-z]+[a-z0-9.-_]*@[a-z]+[a-z0-9]*.[a-z]{2,3}[.]?[a-z]*')]],
       password: ['' ,[Validators.required,Validators.pattern('^[A-Z]?[a-z]+[0-9]+')]],
-      alternativePhone: this.formBuilder.array([]),
-      alternativeName: this.formBuilder.array([])
+      Phones: this.formBuilder.array([]),
+      //Names: this.formBuilder.array([])
     });
   }
 
-  get alternativePhone(){
-    return this.loginform.get('alternativePhone') as FormArray
+  get Phones(){
+    return this.loginform.get('Phones') as FormArray
   }
-  get alternativeName(){
-    return this.loginform.get('alternativeName') as FormArray
+  // get Names(){
+  //   return this.loginform.get('Names') as FormArray
+  // }
+
+  addPhones(){
+    const telefono = <FormArray>this.loginform.controls['Phones']
+    telefono.push(this.formBuilder.group({Phones: []}))
   }
 
-  addPhone(){
-    const celular = <FormArray>this.loginform.controls['alternativePhone']
-    celular.push(this.formBuilder.group({alternativePhone: []}))
-  }
-
-  addName(){
-    const nombre = <FormArray>this.loginform.controls['alternativeName']
-    nombre.push(this.formBuilder.group({alternativeName: []}))
-  }
+  // addNames(){
+  //   const nombre = <FormArray>this.loginform.controls['Names']
+  //   nombre.push(this.formBuilder.group({Names: []}))
+  // }
   
   validaLoginForm(){
     if(this.loginform.valid){
@@ -59,6 +61,7 @@ export class ContactosComponent implements OnInit {
       this.phone = JSON.stringify(console.log(this.loginform.controls['phone'].value))            
       this.email = JSON.stringify(console.log(this.loginform.controls['email'].value))
       this.password = JSON.stringify(console.log(this.loginform.controls['password'].value))
+      alert(['Datos Enviados'])
     }else{
       this.name = JSON.stringify(console.log(this.loginform.controls['name'].errors))
       this.lastname = JSON.stringify(console.log(this.loginform.controls['lastname'].errors))
