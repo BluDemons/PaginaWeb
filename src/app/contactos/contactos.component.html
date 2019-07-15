@@ -15,13 +15,19 @@
                 <div class="form-element">
                     <input placeholder="Teléfono" name="phone" formControlName="phone" type="text">
                     <span *ngIf="getError('phone')">número Obligatorio</span>
+                    <div formArrayName="alternativePhone">
+                        <div *ngFor="let item of alternativePhone.controls; let i=index" [formGroupName]="i">
+                            <input class="form-control" type="text" placeholder="Celular (Opcional)" formControlName="alternativePhone">
+                        </div>
+                    <a class="addPhone" type="button" (click)="addPhone()">Add Phone</a>
+                    </div>
                 </div>
                 <div class="form-element">
                     <input placeholder="example@example.com" name="email" formControlName="email" type="text">
                     <span *ngIf="getError('email')">Correo Inválido</span>
                 </div>
                 <div class="form-element">
-                    <input placeholder="Password" name="password" formControlName="password" type="password">
+                    <input placeholder="Clave" name="password" formControlName="password" type="password">
                     <span *ngIf="getError('password')">Clave Inválida</span>                    
                 </div>
                 <div class="form-element">

@@ -76,6 +76,22 @@ body{
 					border-bottom: solid 2px $rojo;
 				}
 			}
+			.addPhone{
+				@include button(map-keys($buttons-colors)...);
+				border: 0px solid;
+				background: none;
+				cursor: pointer;
+				font-size: 18px;
+				margin-left: 700px;
+				margin-top: 0px;
+				color:$blanco;
+				background-color: $turquesa;
+				padding: 5px;
+				&:hover{
+					background: $turquesa;
+					border: 1px solid $turquesa;
+				}
+			}
 			button{
 				@include button(map-keys($buttons-colors)...);
 				font-size: 50px;
