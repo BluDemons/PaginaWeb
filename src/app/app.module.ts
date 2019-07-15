@@ -18,7 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     HeadersComponent,
     GaleriaComponent,
-    ContactosComponent
+    ContactosComponent,
   ],
   imports: [
     HttpClientModule,

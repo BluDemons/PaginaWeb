@@ -12,8 +12,7 @@ const routes: Routes = [
   {path:'headers',component: HeadersComponent},
   {path:'noticias', component: NoticiasComponent},
   {path:'galeria', component: GaleriaComponent},
-  {path:'contactos', component:ContactosComponent}
-
+  {path:'contactos', component:ContactosComponent},
 ];
 
 @NgModule({

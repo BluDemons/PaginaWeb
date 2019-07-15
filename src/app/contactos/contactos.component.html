@@ -6,19 +6,23 @@
             <form [formGroup]="loginform">
                 <div class="form-element">
                     <input placeholder="Nombre" name="name" formControlName="name" type="text">
-                    <span>{{getError('name')}}</span>
+                    <span *ngIf="getError('name')">Nombre Obligatorio</span>
                 </div>
                 <div class="form-element">
                     <input placeholder="Apellido" name="lastname" formControlName="lastname" type="text">
-                    <span>{{getError('lastname')}}</span>
+                    <span *ngIf="getError('lastname')">Apellido Obligatorio</span>
+                </div>
+                <div class="form-element">
+                    <input placeholder="Teléfono" name="phone" formControlName="phone" type="text">
+                    <span *ngIf="getError('phone')">número Obligatorio</span>
                 </div>
                 <div class="form-element">
                     <input placeholder="example@example.com" name="email" formControlName="email" type="text">
-                    <span>{{getError('email')}}</span>
+                    <span *ngIf="getError('email')">Correo Inválido</span>
                 </div>
                 <div class="form-element">
                     <input placeholder="Password" name="password" formControlName="password" type="password">
-                    <span>{{getError('password')}}</span>
+                    <span *ngIf="getError('password')">Clave Inválida</span>                    
                 </div>
                 <div class="form-element">
                     <button class="colorbutton white" [disabled]="!loginform.valid" (click)="validaLoginForm()" type="submit">
