@@ -1,0 +1,35 @@
+<body>
+  <form [formGroup]="UsuarioForm">
+    <input type="text" formControlName="nombre">
+    <input type="text" formControlName="cedula">
+  </form>
+    <div id="section-2">
+        <div class="content">
+            <h1> Más Festivales</h1>
+            <h5> Regístrate</h5>
+            <form [formGroup]="UsuarioForm">
+                <div class="form-element">
+                    <input placeholder="Nombre" name="nombre" formControlName="nombre" type="text">
+                </div>
+                <div class="form-element">
+                    <input placeholder="Cedula" name="cedula" formControlName="cedula" type="text">
+                </div>
+                <div class="form-element">
+                    <div formArrayName="telefonos">
+                        <div *ngFor="let telefono of UsuarioForm.get('telefonos').controls; let i=index" [formGroupName]="i">
+                          <input type="text" name="numero" formControlName="numero" placeholder="Celular">                          
+                          <select formControlName="operadora" name="" id="">
+                          <option value="999">Seleccione Operadora</option>
+                          <option *ngFor="let operadora of operadoras; let j=index" value={{j}}>
+                            {{operadora}}
+                          </option>
+                        </select>
+                        <a class="addPhone" (click)="deleteTelefonoForm(i)">X</a>
+                        </div>
+                    <a class="addPhone" type="button" (click)="addTelefonoForm()">Add Phone</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

@@ -18,6 +18,7 @@
                     <div formArrayName="Phones">
                         <div *ngFor="let item of Phones.controls; let i=index" [formGroupName]="i">
                             <input class="form-control" type="text" placeholder="cellPhone (Opcional)" formControlName="Phones">
+                            <a class="addPhone" type="button" (click)="deletePhones()">delete</a>
                         </div>
                     <a class="addPhone" type="button" (click)="addPhones()">Add Phone</a>
                     </div>
@@ -29,6 +30,15 @@
                 <div class="form-element">
                     <input placeholder="Clave" name="password" formControlName="password" type="password">
                     <span *ngIf="getError('password')">Clave Inválida</span>                    
+                </div>
+                <div  class="form-element">
+                    <label id="label">Tipo de sangre</label><br>
+                    <small id="small" *ngIf="tipoError">Seleccione una</small>
+                    <div id="label" *ngFor="let control of gettiposS.controls;let i=index;">
+                        <input (change)="getTipo()" [formControl]="control" type="checkbox"
+                            id="inlineCheckbox{{i}}">
+                        <label>{{Tipo[i]}}</label>
+                    </div>
                 </div>
                 <div class="form-element">
                     <button class="colorbutton white" [disabled]="!loginform.valid" (click)="validaLoginForm()" type="submit">

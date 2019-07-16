@@ -10,6 +10,7 @@ import { HeadersComponent } from './headers/headers.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { ContactosComponent } from './contactos/contactos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormularioComponent } from './formulario/formulario.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeadersComponent,
     GaleriaComponent,
     ContactosComponent,
+    FormularioComponent,
   ],
   imports: [
     HttpClientModule,

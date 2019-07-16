@@ -5,6 +5,7 @@ import { HeadersComponent } from './headers/headers.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { ContactosComponent } from './contactos/contactos.component';
+import { FormularioComponent } from './formulario/formulario.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },  
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:'noticias', component: NoticiasComponent},
   {path:'galeria', component: GaleriaComponent},
   {path:'contactos', component:ContactosComponent},
+  {path: 'formulario', component:FormularioComponent}
 ];
 
 @NgModule({

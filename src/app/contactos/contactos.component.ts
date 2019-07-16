@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { parseHttpResponse } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'app-contactos',
@@ -17,6 +16,9 @@ export class ContactosComponent implements OnInit {
   email: string
   password: string
   phones: string[]
+  selectTipo=[]
+  tipoError:boolean = true
+  Tipo: Array <string> =['O+','O-','A+','A-','B+','B-','AB+','AB-'];
 
   constructor(private formBuilder: FormBuilder) { }
   
@@ -27,6 +29,7 @@ export class ContactosComponent implements OnInit {
 
   crearLoginForm(){
     this.loginform = this.formBuilder.group({
+      tipoSa:this.addTiposSa(),
       name: ['',[Validators.required,Validators.pattern('[A-Z]{1}[a-z]{3,10}')]],
       lastname: ['',[Validators.required,Validators.pattern('[A-Z]{1}[a-z]{3,10}')]],
       phone:['',[Validators.required,Validators.pattern('(09){1}[0-9]{8}')]],
@@ -48,7 +51,10 @@ export class ContactosComponent implements OnInit {
     const telefono = <FormArray>this.loginform.controls['Phones']
     telefono.push(this.formBuilder.group({Phones: []}))
   }
-
+  deletePhones(v){
+    const telefono = <FormArray>this.loginform.controls['Phones']
+    telefono.removeAt(v)
+  }
   // addNames(){
   //   const nombre = <FormArray>this.loginform.controls['Names']
   //   nombre.push(this.formBuilder.group({Names: []}))
@@ -78,5 +84,25 @@ export class ContactosComponent implements OnInit {
       error = JSON.stringify(control.errors);
     }
     return error;
+  }
+  get gettiposS(){
+    return this.loginform.get('tipoSa') as FormArray;
+  }
+
+  addTiposSa(){
+    const arr = this.Tipo.map(element=>{
+    return this.formBuilder.control(false);
+   });
+   return this.formBuilder.array(arr);
+  }
+
+  getTipo(){
+    this.selectTipo=[];
+    this.gettiposS.controls.forEach((control,i)=>{
+      if(control.value){
+        this.selectTipo.push(this.Tipo[i]);
+      }
+    });console.log(this.selectTipo)
+    this.tipoError=this.selectTipo.length>0?false:true
   }
 }
