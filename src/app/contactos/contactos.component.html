@@ -15,12 +15,18 @@
                 <div class="form-element">
                     <input placeholder="Teléfono" name="phone" formControlName="phone" type="text">
                     <span *ngIf="getError('phone')">número Obligatorio</span>
-                    <div formArrayName="Phones">
-                        <div *ngFor="let item of Phones.controls; let i=index" [formGroupName]="i">
-                            <input class="form-control" type="text" placeholder="cellPhone (Opcional)" formControlName="Phones">
-                            <a class="addPhone" type="button" (click)="deletePhones()">delete</a>
+                    <div formArrayName="telefonos">
+                        <div *ngFor="let telefono of loginform.get('telefonos').controls; let i=index" [formGroupName]="i">
+                          <input type="text" name="numero" formControlName="numero" placeholder="Celular">                          
+                          <select formControlName="operadora" name="" id="">
+                          <option value="999">Seleccione Operadora</option>
+                          <option *ngFor="let operadora of operadoras; let j=index" value={{j}}>
+                            {{operadora}}
+                          </option>
+                        </select>
+                        <a class="addPhone" (click)="deleteTelefonoForm(i)">X</a>
                         </div>
-                    <a class="addPhone" type="button" (click)="addPhones()">Add Phone</a>
+                    <a class="addPhone" type="button" (click)="addTelefonoForm()">Add Phone</a>
                     </div>
                 </div>
                 <div class="form-element">

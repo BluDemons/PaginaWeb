@@ -19,11 +19,14 @@ export class ContactosComponent implements OnInit {
   selectTipo=[]
   tipoError:boolean = true
   Tipo: Array <string> =['O+','O-','A+','A-','B+','B-','AB+','AB-'];
+  telefonos: FormArray
+  operadoras:string[]
 
   constructor(private formBuilder: FormBuilder) { }
   
   ngOnInit() {
     this.crearLoginForm();
+    this.operadoras=['Claro','CNT','Movistar','Twenty']
     
   }
 
@@ -35,25 +38,30 @@ export class ContactosComponent implements OnInit {
       phone:['',[Validators.required,Validators.pattern('(09){1}[0-9]{8}')]],
       email: ['', [Validators.required, Validators.pattern('[a-z]+[a-z0-9.-_]*@[a-z]+[a-z0-9]*.[a-z]{2,3}[.]?[a-z]*')]],
       password: ['' ,[Validators.required,Validators.pattern('^[A-Z]?[a-z]+[0-9]+')]],
-      Phones: this.formBuilder.array([]),
+      telefonos: this.formBuilder.array([this.crearTelefonoForm()])
       //Names: this.formBuilder.array([])
     });
   }
 
-  get Phones(){
-    return this.loginform.get('Phones') as FormArray
-  }
+  // get Phones(){
+  //   return this.loginform.get('Phones') as FormArray
+  // }
   // get Names(){
   //   return this.loginform.get('Names') as FormArray
   // }
 
-  addPhones(){
-    const telefono = <FormArray>this.loginform.controls['Phones']
-    telefono.push(this.formBuilder.group({Phones: []}))
+  addTelefonoForm(){
+    this.telefonos = this.loginform.get('telefonos') as FormArray
+    this.telefonos.push(this.crearTelefonoForm())
   }
-  deletePhones(v){
-    const telefono = <FormArray>this.loginform.controls['Phones']
-    telefono.removeAt(v)
+  deleteTelefonoForm(i){
+    this.telefonos.removeAt(i)
+  }
+  crearTelefonoForm(): FormGroup{
+    return this.formBuilder.group({
+      operadora:['999',[]],
+      numero:['',[]]
+    })
   }
   // addNames(){
   //   const nombre = <FormArray>this.loginform.controls['Names']
