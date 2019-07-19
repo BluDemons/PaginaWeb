@@ -5,8 +5,10 @@
             <h5> Regístrate</h5>
             <form [formGroup]="loginform">
                 <div class="form-element">
-                    <input placeholder="Nombre" name="name" formControlName="name" type="text">
-                    <span *ngIf="getError('name')">Nombre Obligatorio</span>
+                    <input placeholder="Nombre " id="name" name="name" formControlName="name" type="text" required/>
+                    <div class="requirements">
+                        El nombre debe contener al menos una letra mayúscula al inicio
+                    </div>
                 </div>
                 <div class="form-element">
                     <input placeholder="Apellido" name="lastname" formControlName="lastname" type="text">

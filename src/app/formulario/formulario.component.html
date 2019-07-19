@@ -3,28 +3,31 @@
 
     <div>
       <input type="text" id="first_name" name="first_name" required placeholder=" " />
-      <label for="first_name">First Name</label>
+      <label for="first_name">Nombre</label>
     </div>
-
+    
     <div>
       <input type="text" id="last_name" name="last_name" required placeholder=" " />
-      <label for="last_name">Last Name</label>
+      <label for="last_name">Apellido</label>
     </div>
-
+    
     <div>
-      <input type="email" id="email" name="email" required placeholder=" " />
+      <input type="email" id="email" name="email"  placeholder=" " required />
       <label for="email">Email Address</label>
       <div class="requirements">
         Must be a valid email address.
       </div>
     </div>
-
+    
     <div>
-      <input type="password" id="password" name="password" required placeholder=" "
-        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" />
+      <input type="password" id="password" name="password"  placeholder=" " required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" />
       <label for="password">Password</label>
       <div class="requirements">
-        Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one
-        number.
+        Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number.
       </div>
     </div>
+    
+    <input type="submit" value="Sign Up" />
+  
+  </form>
+</div>
