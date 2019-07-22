@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-contactos',
   templateUrl: './contactos.component.html',
-  styleUrls: ['./contactos.component.scss']
+  styleUrls: ['./contactos.component.scss'],
+  template:` 
+  <h2>{{"helo"+ nombre}}</h2>
+  <button (click)="fireEvent()">Sent event</button>
+  `,
 })
 export class ContactosComponent implements OnInit {
 
@@ -15,12 +19,14 @@ export class ContactosComponent implements OnInit {
   phone:string
   email: string
   password: string
-  phones: string[]
   selectTipo=[]
   tipoError:boolean = true
   Tipo: Array <string> =['O+','O-','A+','A-','B+','B-','AB+','AB-'];
   telefonos: FormArray
   operadoras:string[]
+
+  @Input('parentData') public nombre;
+  @Output() public childEvent= new EventEmitter();
 
   constructor(private formBuilder: FormBuilder) { }
   
@@ -29,7 +35,9 @@ export class ContactosComponent implements OnInit {
     this.operadoras=['Claro','CNT','Movistar','Twenty']
     
   }
-
+  fireEvent(){
+    this.childEvent.emit('Hey juan Andres');
+  }
   crearLoginForm(){
     this.loginform = this.formBuilder.group({
       tipoSa:this.addTiposSa(),
@@ -43,18 +51,12 @@ export class ContactosComponent implements OnInit {
     });
   }
 
-  // get Phones(){
-  //   return this.loginform.get('Phones') as FormArray
-  // }
-  // get Names(){
-  //   return this.loginform.get('Names') as FormArray
-  // }
-
   addTelefonoForm(){
     this.telefonos = this.loginform.get('telefonos') as FormArray
     this.telefonos.push(this.crearTelefonoForm())
   }
   deleteTelefonoForm(i){
+    this.telefonos = this.loginform.get('telefonos') as FormArray
     this.telefonos.removeAt(i)
   }
   crearTelefonoForm(): FormGroup{
@@ -63,10 +65,6 @@ export class ContactosComponent implements OnInit {
       numero:['',[]]
     })
   }
-  // addNames(){
-  //   const nombre = <FormArray>this.loginform.controls['Names']
-  //   nombre.push(this.formBuilder.group({Names: []}))
-  // }
   
   validaLoginForm(){
     if(this.loginform.valid){

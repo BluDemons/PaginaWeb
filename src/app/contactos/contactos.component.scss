@@ -9,7 +9,6 @@ body{
 	height: 135vh;
 	background: $blanco;
 	color: $azulOscuro;
-
 	.content{
 		@include center-vertical;
 		top: 65%;
@@ -33,181 +32,206 @@ body{
         margin-right: 10%;
         color: $blanco;
     }
-	form{
-		max-width: 700px;
+
+	form {
+		padding: 70px 20px 20px 50px;
+		max-width: 550px;
 		margin: 0 auto;
+		
+		// positioning context
 		> div {
-			position: relative;
-			background: white;
-			border-bottom: 1px solid #ccc;
+		  position: relative;
+		  background: white;
+		  border-bottom: 1px solid #ccc;
+		  
+		  // Looks like placeholder
+		  > label {
+			opacity: 0.3;
+			font-weight: bold;
+			position: absolute;
+			top: 22px;
+			left: 20px;
+		  }
+		  
+		  > input[type="text"],
+		  > input[type="email"],
+		  > input[type="password"] {
+			width: 100%;
+			border: 0;
+			padding: 20px 20px 20px 50px;
+			background: #eee;
 			
-			// Looks like placeholder
-			> label {
-			  opacity: 0.3;
-			  font-weight: bold;
-			  position: absolute;
-			  top: 22px;
-			  left: 20px;
+			&:focus {
+			  
+			  // removing default focus style
+			  outline: 0;
+			  // adding new one
+			  background: white;
+			  
+			  & + label {
+				opacity: 0;
+			  }
 			}
 			
-			> input[type="text"],
-			> input[type="email"],
-			> input[type="password"] {
-			  width: 100%;
-			  border: 0;
-			  padding: 20px 20px 20px 50px;
-			  background: #eee;
-			  
-			  &:focus {
-				
-				// removing default focus style
-				outline: 0;
-				// adding new one
-				background: white;
-				
-				& + label {
-				  opacity: 0;
-				}
+			&:valid {
+			  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/check.svg);
+			  background-size: 20px;
+			  background-repeat: no-repeat;
+			  background-position: 20px 20px;
+			  & + label {
+				opacity: 0;
 			  }
-			  
-			  &:valid {
-				background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/check.svg);
-				background-size: 20px;
-				background-repeat: no-repeat;
-				background-position: 20px 20px;
-				& + label {
-				  opacity: 0;
-				}
-			  }
-			  
-			  &:invalid:not(:focus):not(:placeholder-shown) {
-				background: pink;
-				& + label {
-				  opacity: 0;
-				}
-			  }
-			  
-			  &:invalid:focus:not(:placeholder-shown) {
-				& ~ .requirements {
-				  max-height: 200px;
-				  padding: 0 30px 20px 50px;
-				}
-			  }
-			  
 			}
 			
-			.requirements {
-			  padding: 0 30px 0 50px;
-			  color: #999;
-			  max-height: 0;
-			  transition: 0.28s;
-			  overflow: hidden;
-			  color: red;
-			  font-style: italic;
+			&:invalid:not(:focus):not(:placeholder-shown) {
+			  background: pink;
+			  & + label {
+				opacity: 0;
+			  }
+			}
+			
+			&:invalid:focus:not(:placeholder-shown) {
+			  & ~ .requirements {
+				max-height: 200px;
+				padding: 0 30px 20px 50px;
+			  }
 			}
 			
 		  }
-		.form-element{
-			display: block;
-			input[type=text]{
-				border-style: none;
-				background: none;
-				outline: none;
-				border-bottom: solid 2px darken($blanco,20%);
-				font-size: 25px;
-				font-family: 'Lato', sans-serif;
-				width: 50%;
-				margin-left: 25%;
-				text-align: center;
-				margin-top: 15px;
-				margin-bottom: 30px;
-				color: $negro;
-				transition: all 0.3s ease 0s;
-				padding-bottom: 10px;
-
-				&:focus{
-					border-bottom: solid 2px $amarillo;
-				}
-			}
-			input[type=password]{
-				border-style: none;
-				background: none;
-				outline: none;
-				border-bottom: solid 2px darken($blanco,20%);
-				font-size: 25px;
-				font-family: 'Lato', sans-serif;
-				width: 50%;
-				margin-left: 25%;
-				text-align: center;
-				margin-top: 15px;
-				margin-bottom: 30px;
-				color: $negro;
-				transition: all 0.3s ease 0s;
-				padding-bottom: 10px;
-
-				&:focus{
-					border-bottom: solid 2px $rojo;
-				}
-			}
-			.addPhone{
-				@include button(map-keys($buttons-colors)...);
-				border: 0px solid;
-				background: none;
-				cursor: pointer;
-				font-size: 18px;
-				margin-left: 700px;
-				margin-top: 0px;
-				color:$blanco;
-				background-color: $turquesa;
-				padding: 5px;
-				&:hover{
-					background: $turquesa;
-					border: 1px solid $turquesa;
-				}
-			}
-			button{
-				@include button(map-keys($buttons-colors)...);
-				font-size: 50px;
-				font-family: 'Lato', sans-serif;
-				background: $turquesa;
-				border: 1px solid $blanco;
-				width: 50%;
-				outline: none;
-				margin-left: 25%;
-				margin-top: 30px;
-				margin-bottom: 30px;
-				transition: all 0.3s ease 0s;
-				padding: 20px 20px 20px 20px;
-
-				&:hover{
-					background: $turquesa;
-					border: 1px solid $blanco;
-				}
-			}
-			#label{
-				font-family: 'Times New Roman', Times, serif;
-				font-size: 17px;
-				color: $negro;
-				background: none;
-				outline: none;
-				margin-left: 10%;
-				text-align: center;
-				transition: all 0.3s ease 0s;
-				display: inline-block;
-				@include center-horizontal;
-			}
-			#small{
-				font-family: 'Times New Roman', Times, serif;
-				font-size: 17px;
-				color: darken($rosa,20%);
-				background: none;
-				outline: none;
-				margin-left: 10%;
-				text-align: center;
-				@include center-horizontal;
-				
-			}
+		  
+		  .requirements {
+			padding: 0 30px 0 50px;
+			color: #999;
+			max-height: 0;
+			transition: 0.28s;
+			overflow: hidden;
+			color: red;
+			font-style: italic;
+		  }
+		  
 		}
-	}
-	@include placeholder(darken($azul,20%),$negro);
+		
+		input[type="submit"] {
+		  display: block;
+		  width: 100%;
+		  margin: 20px 0;
+		  background: #41D873;
+		  color: white;
+		  border: 0;
+		  padding: 20px;
+		  font-size: 1.2rem;
+		}
+		
+	  }
+	  
+	  body {
+		background: #333;
+		font-family: 'PT Sans', sans-serif;
+		padding: 20px;
+	  }
+	  * {
+		box-sizing: border-box;
+	  }
+	// 	.form-element{
+	// 		display: block;
+	// 		input[type=text]{
+	// 			border-style: none;
+	// 			background: none;
+	// 			outline: none;
+	// 			border-bottom: solid 2px darken($blanco,20%);
+	// 			font-size: 25px;
+	// 			font-family: 'Lato', sans-serif;
+	// 			width: 50%;
+	// 			margin-left: 25%;
+	// 			text-align: center;
+	// 			margin-top: 15px;
+	// 			margin-bottom: 30px;
+	// 			color: $negro;
+	// 			transition: all 0.3s ease 0s;
+	// 			padding-bottom: 10px;
+
+	// 			&:focus{
+	// 				border-bottom: solid 2px $amarillo;
+	// 			}
+	// 		}
+	// 		input[type=password]{
+	// 			border-style: none;
+	// 			background: none;
+	// 			outline: none;
+	// 			border-bottom: solid 2px darken($blanco,20%);
+	// 			font-size: 25px;
+	// 			font-family: 'Lato', sans-serif;
+	// 			width: 50%;
+	// 			margin-left: 25%;
+	// 			text-align: center;
+	// 			margin-top: 15px;
+	// 			margin-bottom: 30px;
+	// 			color: $negro;
+	// 			transition: all 0.3s ease 0s;
+	// 			padding-bottom: 10px;
+
+	// 			&:focus{
+	// 				border-bottom: solid 2px $rojo;
+	// 			}
+	// 		}
+	// 		.addPhone{
+	// 			@include button(map-keys($buttons-colors)...);
+	// 			border: 0px solid;
+	// 			background: none;
+	// 			cursor: pointer;
+	// 			font-size: 18px;
+	// 			margin-left: 700px;
+	// 			margin-top: 0px;
+	// 			color:$blanco;
+	// 			background-color: $turquesa;
+	// 			padding: 5px;
+	// 			&:hover{
+	// 				background: $turquesa;
+	// 				border: 1px solid $turquesa;
+	// 			}
+	// 		}
+	// 		button{
+	// 			@include button(map-keys($buttons-colors)...);
+	// 			font-size: 50px;
+	// 			font-family: 'Lato', sans-serif;
+	// 			background: $turquesa;
+	// 			border: 1px solid $blanco;
+	// 			width: 50%;
+	// 			outline: none;
+	// 			margin-left: 25%;
+	// 			margin-top: 30px;
+	// 			margin-bottom: 30px;
+	// 			transition: all 0.3s ease 0s;
+	// 			padding: 20px 20px 20px 20px;
+
+	// 			&:hover{
+	// 				background: $turquesa;
+	// 				border: 1px solid $blanco;
+	// 			}
+	// 		}
+	// 		#label{
+	// 			font-family: 'Times New Roman', Times, serif;
+	// 			font-size: 17px;
+	// 			color: $negro;
+	// 			background: none;
+	// 			outline: none;
+	// 			margin-left: 10%;
+	// 			text-align: center;
+	// 			transition: all 0.3s ease 0s;
+	// 			display: inline-block;
+	// 			@include center-horizontal;
+	// 		}
+	// 		#small{
+	// 			font-family: 'Times New Roman', Times, serif;
+	// 			font-size: 17px;
+	// 			color: darken($rosa,20%);
+	// 			background: none;
+	// 			outline: none;
+	// 			margin-left: 10%;
+	// 			text-align: center;
+	// 			@include center-horizontal;
+				
+	// 		}
+	// 	}
+	// }
 }

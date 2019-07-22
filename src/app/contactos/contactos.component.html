@@ -1,3 +1,4 @@
+<router-outlet></router-outlet>
 <body>
     <div id="section-2">
         <div class="content">
@@ -5,39 +6,42 @@
             <h5> Regístrate</h5>
             <form [formGroup]="loginform">
                 <div class="form-element">
-                    <input placeholder="Nombre " id="name" name="name" formControlName="name" type="text" required/>
-                    <div class="requirements">
+                    <input placeholder="Nombre" id="name" name="name" formControlName="name" type="text" required/>
+                    <label class="requirements" *ngIf="getError('name')">
                         El nombre debe contener al menos una letra mayúscula al inicio
-                    </div>
+                    </label>
                 </div>
-                <div class="form-element">
-                    <input placeholder="Apellido" name="lastname" formControlName="lastname" type="text">
-                    <span *ngIf="getError('lastname')">Apellido Obligatorio</span>
+                <div>
+                    <input placeholder="Apellido" name="lastname" formControlName="lastname" type="text" required>
+                    <label class="requirements" *ngIf="getError('lastname')">Apellido Obligatorio</label>
                 </div>
-                <div class="form-element">
-                    <input placeholder="Teléfono" name="phone" formControlName="phone" type="text">
-                    <span *ngIf="getError('phone')">número Obligatorio</span>
+                <div>
+                    <input placeholder="Teléfono" name="phone" formControlName="phone" type="text" required>
+                    <span class="requirements" *ngIf="getError('phone')">número Obligatorio</span>
                     <div formArrayName="telefonos">
                         <div *ngFor="let telefono of loginform.get('telefonos').controls; let i=index" [formGroupName]="i">
-                          <input type="text" name="numero" formControlName="numero" placeholder="Celular">                          
-                          <select formControlName="operadora" name="" id="">
-                          <option value="999">Seleccione Operadora</option>
-                          <option *ngFor="let operadora of operadoras; let j=index" value={{j}}>
-                            {{operadora}}
-                          </option>
-                        </select>
-                        <a class="addPhone" (click)="deleteTelefonoForm(i)">X</a>
+                            <div>
+                            <input type="text" name="numero" formControlName="numero" placeholder="Celular" required>
+                            <span class="requirements" *ngIf="getError('phone')">número Obligatorio</span>
+                            <select formControlName="operadora" name="" id="">
+                                <option value="999">Seleccione Operadora</option>
+                                <option *ngFor="let operadora of operadoras; let j=index" value={{j}}>
+                                    {{operadora}}
+                                </option>
+                            </select>
+                            </div>
+                            <a class="addPhone" (click)="deleteTelefonoForm(i)">X</a>
                         </div>
                     <a class="addPhone" type="button" (click)="addTelefonoForm()">Add Phone</a>
                     </div>
                 </div>
-                <div class="form-element">
-                    <input placeholder="example@example.com" name="email" formControlName="email" type="text">
-                    <span *ngIf="getError('email')">Correo Inválido</span>
+                <div>
+                    <input placeholder="example@example.com " name="email" formControlName="email" type="text" required>
+                    <span class="requirements" *ngIf="getError('email')">Correo Inválido</span>
                 </div>
-                <div class="form-element">
-                    <input placeholder="Clave" name="password" formControlName="password" type="password">
-                    <span *ngIf="getError('password')">Clave Inválida</span>                    
+                <div>
+                    <input placeholder="Clave" name="password" formControlName="password" type="password" required>
+                    <span class="requirements" *ngIf="getError('password')">Clave Inválida</span>                    
                 </div>
                 <div  class="form-element">
                     <label id="label">Tipo de sangre</label><br>
