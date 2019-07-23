@@ -11,6 +11,7 @@ import { GaleriaComponent } from './galeria/galeria.component';
 import { ContactosComponent } from './contactos/contactos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormularioComponent } from './formulario/formulario.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FormularioComponent } from './formulario/formulario.component';
     GaleriaComponent,
     ContactosComponent,
     FormularioComponent,
+    TestComponent,
   ],
   imports: [
     HttpClientModule,
