@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 //generar reportes
 import jsPDF from 'jsPDF';
-import { VirtualTimeScheduler } from 'rxjs';
 
 @Component({
   selector: 'app-contactos',
@@ -42,12 +41,15 @@ export class ContactosComponent implements OnInit {
     let x = 25
     let y = 25
     const sizemm = 0.3515
-    let size = 14
+    let size = 18
     let intelineado = 10
-    let rosa= '#ff0080'
-    let texto='Coordinar (en unidades declaradas al inicio del documento PDF) contra el borde superior de la página.'
+    var logo = new Image();
+    logo.src = '../../assets/img/images2.jpg';
+    var imagen = new Image();
+    imagen.src='../../assets/img/imagen02.jpg'
+    let texto='El gigante del dance belga es, sin duda, el emperador de Europa y cada año atrae a amantes de la música electrónica de todo el mundo con sus famosos escenarios, producción visual y un cartel a rebosar de grandes nombres desde EDM hasta hardstyle. El festival ha organizado otros eventos en los cinco continentes, pero la fiesta original en la ciudad de Boom será siempre la más característica.'
     let doc=new jsPDF({
-      orientation:'L',
+      orientation:'P',
       unit:'mm',
       format: 'A4',
       compress:true,
@@ -59,23 +61,24 @@ export class ContactosComponent implements OnInit {
     // size=22
     // y=y+(size*sizemm)+intelineado
     // doc.text('cambie el tamaño de letra',x,y)
-    // doc.setTextColor(rosa)
-    doc.setFontSize(size)
-    x=x+(size*sizemm)+intelineado
-    doc.text('DATOS GENERALES',x,y)
-    y=y+(size*sizemm)+intelineado
-    doc.text('Nombre:',x,y)
-    x=y+(size*sizemm)+intelineado
-    doc.text('Apellido:',x,y)
-    y=y+(size*sizemm)+intelineado
-    doc.text('Dirección:',x,y)
-    y=y+(size*sizemm)+intelineado
-    doc.text('Teléfono:',x,y)
-    x=y+(size*sizemm)+intelineado
-    doc.text('Fecha de Nacimiento:',x,y)
-    y=y+(size*sizemm)+intelineado
-    doc.text(texto,x,y,{maxWidth:200})
-    doc.save('juanPDF')
+    doc.addImage(imagen,x+15,97,130,130,doc.internal.pageSize.height-30);
+    doc.setTextColor(70,142,231)
+    doc.setFontSize(size);
+    doc.setFont("helvetica","bold");
+    x=x+(size*sizemm)+intelineado;
+    doc.text('DATOS GENERALES',x,y);
+    doc.addImage(logo, 'JPEG', 150, 10, 30, 20);
+
+    doc.setFontSize(size-6);
+    doc.setTextColor(0,0,0);
+    doc.setFont('Comic Sans',null);
+    doc.text('andrejuan11048@gmail.com',x,y+250,{maxWidth:200});
+    doc.setTextColor(13,223,240);;
+    y=y+(size*sizemm)+intelineado;
+    doc.text(texto,x,y,{maxWidth:150});
+    doc.setTextColor(150);
+    doc.text(45, doc.internal.pageSize.height - 30, 'Watermark');
+    doc.save('juanPDF');
   }
 
   crearLoginForm(){
