@@ -65,19 +65,22 @@ export class ContactosComponent implements OnInit {
     doc.setTextColor(70,142,231)
     doc.setFontSize(size);
     doc.setFont("helvetica","bold");
-    x=x+(size*sizemm)+intelineado;
-    doc.text('DATOS GENERALES',x,y);
+    doc.text('Festivales de música',x,y);
+    doc.line(25, 32, 180, 32);
     doc.addImage(logo, 'JPEG', 150, 10, 30, 20);
 
-    doc.setFontSize(size-6);
-    doc.setTextColor(0,0,0);
     doc.setFont('Comic Sans',null);
-    doc.text('andrejuan11048@gmail.com',x,y+250,{maxWidth:200});
     doc.setTextColor(13,223,240);;
+    doc.setFontSize(size-6);
     y=y+(size*sizemm)+intelineado;
     doc.text(texto,x,y,{maxWidth:150});
     doc.setTextColor(150);
-    doc.text(45, doc.internal.pageSize.height - 30, 'Watermark');
+    doc.setFontSize(100);
+    doc.text(45, doc.internal.pageSize.height - 30, 'Juan Rojas',45);
+    doc.setFontSize(size-6);
+    doc.setTextColor(0,0,0);
+    doc.setFont('Comic Sans',null);
+    doc.text('andrejuan11048@gmail.com',x,y+240,{maxWidth:200});
     doc.save('juanPDF');
   }
 

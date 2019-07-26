@@ -23,7 +23,6 @@
                         <div *ngFor="let telefono of loginform.get('telefonos').controls; let i=index" [formGroupName]="i">
                             <div>
                             <input type="text" name="numero" formControlName="numero" placeholder="Celular" required>
-                            <span class="requirements" *ngIf="getError('phone')">número Obligatorio</span>
                             <select formControlName="operadora" name="" id="">
                                 <option value="999">Seleccione Operadora</option>
                                 <option *ngFor="let operadora of operadoras; let j=index" value={{j}}>
@@ -45,7 +44,7 @@
                     <span class="requirements" *ngIf="getError('password')">Clave Inválida</span>                    
                 </div>
                 <div  class="form-element">
-                    <label id="label">Tipo de sangre</label><br>
+                    <div>Tipo de sangre</div><br>
                     <small id="small" *ngIf="tipoError">Seleccione una</small>
                     <div id="label" *ngFor="let control of gettiposS.controls;let i=index;">
                         <input (change)="getTipo()" [formControl]="control" type="checkbox"

@@ -109,19 +109,7 @@ body{
 			font-style: italic;
 		  }
 		  
-		}
-		
-		input[type="submit"] {
-		  display: block;
-		  width: 100%;
-		  margin: 20px 0;
-		  background: #41D873;
-		  color: white;
-		  border: 0;
-		  padding: 20px;
-		  font-size: 1.2rem;
-		}
-		
+		}		
 	  }
 	  
 	  body {
@@ -132,6 +120,24 @@ body{
 	  * {
 		box-sizing: border-box;
 	  }
+	  button{
+		@include button(map-keys($buttons-colors)...);
+		font-size: 20px;
+		font-family: 'Lato', sans-serif;
+		background: $turquesa;
+		border: 1px solid $blanco;
+		width: 35%;
+		outline: none;
+		margin-left: 25%;
+		margin-top: 30px;
+		margin-bottom: 30px;
+		transition: all 0.3s ease 0s;
+		padding: 20px 20px 20px 20px;
+
+		&:hover{
+			background: $turquesa;
+			border: 1px solid $blanco;
+		}
 	// 	.form-element{
 	// 		display: block;
 	// 		input[type=text]{
@@ -234,4 +240,5 @@ body{
 	// 		}
 	// 	}
 	// }
+	}
 }
